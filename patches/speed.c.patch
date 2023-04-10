@@ -1,0 +1,15 @@
+--- openssl/apps/speed.c	2023-04-10 11:30:52.426063452 -0400
++++ openssl-3.1.0/apps/speed.c	2023-04-10 03:31:52.617930321 -0400
+@@ -20,6 +20,12 @@
+ #define SM2_SECONDS     PKEY_SECONDS
+ #define FFDH_SECONDS    PKEY_SECONDS
+ 
++// Ability to disable speed support was removed in 1.1.1
++unsigned alarm(unsigned seconds)
++{
++    return 0; 
++}
++
+ /* We need to use some deprecated APIs */
+ #define OPENSSL_SUPPRESS_DEPRECATED
+ 

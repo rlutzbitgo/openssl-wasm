@@ -1,0 +1,11 @@
+--- openssl/crypto/mem_sec.c	2023-04-10 11:30:52.456063477 -0400
++++ openssl-3.1.0/crypto/mem_sec.c	2023-04-10 03:34:42.694738053 -0400
+@@ -576,7 +576,7 @@
+     OPENSSL_free(sh.bitmalloc);
+ #if !defined(_WIN32)
+     if (sh.map_result != MAP_FAILED && sh.map_size)
+-        munmap(sh.map_result, sh.map_size);
++        free(sh.map_result);
+ #else
+     if (sh.map_result != NULL && sh.map_size)
+         VirtualFree(sh.map_result, 0, MEM_RELEASE);
